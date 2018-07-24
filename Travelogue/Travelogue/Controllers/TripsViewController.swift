@@ -11,6 +11,8 @@ import CoreData
 
 class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    var trips: [Trip] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,14 +23,37 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return trips.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tripCell", for: indexPath)
         
+        if let cell = cell as? TripTableViewCell {
+            let trip = trips[indexPath.row]
+            
+            cell.tripTitleLabel.text = trip.title
+            cell.tripDescriptionLabel.text = trip.contents
+        }
+        
         return cell
     }
+    
+    // Selecting image from Photo Library
+//    @IBAction func addImageFromPicker(_ sender: Any) {
+//        let picker = UIImagePickerController()
+//        picker.allowsEditing = true
+//        picker.delegate = self
+//        present(picker, animated: true)
+//    }
+    
+//    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+//        guard let image = info[UIImagePickerControllerEditedImage] as? UIImage else { return }
+//        
+//        imageView.image = image
+//
+//        dismiss(animated: true)
+//    }
     
 
     /*

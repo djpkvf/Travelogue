@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="1We-s9-hDI" kind="relationship" relationship="rootViewController" id="cm2-iW-2Ee"/>
+                        <segue destination="1We-s9-hDI" kind="relationship" relationship="rootViewController" id="kji-7a-XXH"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J3n-M8-YGq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -38,22 +39,39 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tripCell" textLabel="3MI-8R-0jt" style="IBUITableViewCellStyleDefault" id="GgC-4Z-TGP">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tripCell" rowHeight="75" id="GgC-4Z-TGP" customClass="TripTableViewCell" customModule="Travelogue" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GgC-4Z-TGP" id="eCO-ZJ-qZN">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="74.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3MI-8R-0jt">
-                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vQN-sm-sMK">
+                                                    <rect key="frame" x="15" y="11" width="345" height="21"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qm5-hX-yME">
+                                                    <rect key="frame" x="15" y="37" width="345" height="15.5"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="vQN-sm-sMK" secondAttribute="trailing" id="I9u-8Y-1yg"/>
+                                                <constraint firstItem="qm5-hX-yME" firstAttribute="leading" secondItem="vQN-sm-sMK" secondAttribute="leading" id="Nf2-ZE-E7N"/>
+                                                <constraint firstItem="vQN-sm-sMK" firstAttribute="top" secondItem="eCO-ZJ-qZN" secondAttribute="topMargin" id="RUo-NA-0L9"/>
+                                                <constraint firstItem="qm5-hX-yME" firstAttribute="top" secondItem="vQN-sm-sMK" secondAttribute="bottom" constant="5" id="eps-V2-tna"/>
+                                                <constraint firstItem="qm5-hX-yME" firstAttribute="trailing" secondItem="vQN-sm-sMK" secondAttribute="trailing" id="pnY-CF-X7k"/>
+                                                <constraint firstItem="vQN-sm-sMK" firstAttribute="leading" secondItem="eCO-ZJ-qZN" secondAttribute="leadingMargin" id="uRO-6J-cdH"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="tripDescriptionLabel" destination="qm5-hX-yME" id="Xkc-lw-yeZ"/>
+                                            <outlet property="tripTitleLabel" destination="vQN-sm-sMK" id="7km-Xv-d4K"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -75,7 +93,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1gT-Hz-5cN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="345" y="90"/>
+            <point key="canvasLocation" x="304.80000000000001" y="89.505247376311857"/>
         </scene>
     </scenes>
 </document>
