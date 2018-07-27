@@ -35,7 +35,7 @@ public class Entry: NSManagedObject {
         }
     }
     
-    convenience init?(title: String?, contents: String?, date: Date?, image: UIImage?) {
+    convenience init?(title: String?, contents: String?, date: Date?, image: UIImage?, trip: Trip) {
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         
         guard let managedContext = appDelegate?.persistentContainer.viewContext else {
@@ -48,5 +48,14 @@ public class Entry: NSManagedObject {
         self.contents = contents
         self.date = date
         self.image = image
+        self.trip = trip
+    }
+    
+    func update(title: String, contents: String?, date: Date?, image: UIImage?, trip: Trip) {
+        self.title = title
+        self.contents = contents
+        self.date = date
+        self.image = image
+        self.trip = trip
     }
 }

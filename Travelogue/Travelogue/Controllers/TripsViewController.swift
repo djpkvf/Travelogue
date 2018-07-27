@@ -20,25 +20,15 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        
-        let managedContext = appDelegate.persistentContainer.viewContext
-        
-        let fetchRequest: NSFetchRequest<Trip> = Trip.fetchRequest()
-        
-        do {
-            trips = try managedContext.fetch(fetchRequest)
-            
-            tripsTableView.reloadData()
-        } catch {
-            print("Could not fetch")
-        }
+        getTrips()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -58,6 +48,24 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return cell
     }
     
+    func getTrips() {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        let fetchRequest: NSFetchRequest<Trip> = Trip.fetchRequest()
+        
+        do {
+            trips = try managedContext.fetch(fetchRequest)
+            
+            tripsTableView.reloadData()
+        } catch {
+            print("Could not fetch")
+        }
+    }
+    
     // Selecting image from Photo Library
 //    @IBAction func addImageFromPicker(_ sender: Any) {
 //        let picker = UIImagePickerController()
@@ -74,14 +82,15 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
 //        dismiss(animated: true)
 //    }
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        guard let destination = segue.destination as? EntriesViewController,
+            let selectedRow = self.tripsTableView.indexPathForSelectedRow?.row else {
+                return
+        }
+        destination.trip = trips[selectedRow]
     }
-    */
-
 }

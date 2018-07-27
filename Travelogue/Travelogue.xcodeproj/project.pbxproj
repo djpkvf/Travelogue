@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		8BCCDAE3210AAB7A00530CB8 /* AddTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCCDAE2210AAB7A00530CB8 /* AddTripViewController.swift */; };
+		8BCCDAE5210AB22600530CB8 /* EntryTableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCCDAE4210AB22600530CB8 /* EntryTableTableViewCell.swift */; };
+		8BCCDAE9210AB2B900530CB8 /* EntriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCCDAE8210AB2B900530CB8 /* EntriesViewController.swift */; };
+		8BCCDAEB210ACBF600530CB8 /* AddEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCCDAEA210ACBF600530CB8 /* AddEntryViewController.swift */; };
 		8BCFE9DA21069D18003CC6C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCFE9D921069D18003CC6C1 /* AppDelegate.swift */; };
 		8BCFE9DF21069D18003CC6C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BCFE9DD21069D18003CC6C1 /* Main.storyboard */; };
 		8BCFE9E221069D18003CC6C1 /* Travelogue.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8BCFE9E021069D18003CC6C1 /* Travelogue.xcdatamodeld */; };
@@ -42,6 +45,9 @@
 
 /* Begin PBXFileReference section */
 		8BCCDAE2210AAB7A00530CB8 /* AddTripViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTripViewController.swift; sourceTree = "<group>"; };
+		8BCCDAE4210AB22600530CB8 /* EntryTableTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryTableTableViewCell.swift; sourceTree = "<group>"; };
+		8BCCDAE8210AB2B900530CB8 /* EntriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntriesViewController.swift; sourceTree = "<group>"; };
+		8BCCDAEA210ACBF600530CB8 /* AddEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEntryViewController.swift; sourceTree = "<group>"; };
 		8BCFE9D621069D18003CC6C1 /* Travelogue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Travelogue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BCFE9D921069D18003CC6C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8BCFE9DE21069D18003CC6C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -115,6 +121,7 @@
 				8BCFEA0A21069D69003CC6C1 /* Controllers */,
 				8BCFE9D921069D18003CC6C1 /* AppDelegate.swift */,
 				8BCFEA182106ACF2003CC6C1 /* TripTableViewCell.swift */,
+				8BCCDAE4210AB22600530CB8 /* EntryTableTableViewCell.swift */,
 				8BCFE9DD21069D18003CC6C1 /* Main.storyboard */,
 				8BCFE9E321069D19003CC6C1 /* Assets.xcassets */,
 				8BCFE9E521069D19003CC6C1 /* LaunchScreen.storyboard */,
@@ -147,6 +154,8 @@
 			children = (
 				8BCFEA0C21069D82003CC6C1 /* TripsViewController.swift */,
 				8BCCDAE2210AAB7A00530CB8 /* AddTripViewController.swift */,
+				8BCCDAE8210AB2B900530CB8 /* EntriesViewController.swift */,
+				8BCCDAEA210ACBF600530CB8 /* AddEntryViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -296,12 +305,15 @@
 				8BCFEA152106A0AD003CC6C1 /* Trip+CoreDataProperties.swift in Sources */,
 				8BCFEA0D21069D82003CC6C1 /* TripsViewController.swift in Sources */,
 				8BCFE9DA21069D18003CC6C1 /* AppDelegate.swift in Sources */,
+				8BCCDAE5210AB22600530CB8 /* EntryTableTableViewCell.swift in Sources */,
 				8BCFEA122106A0AD003CC6C1 /* Entry+CoreDataClass.swift in Sources */,
 				8BCFEA192106ACF2003CC6C1 /* TripTableViewCell.swift in Sources */,
 				8BCCDAE3210AAB7A00530CB8 /* AddTripViewController.swift in Sources */,
 				8BCFE9E221069D18003CC6C1 /* Travelogue.xcdatamodeld in Sources */,
 				8BCFEA142106A0AD003CC6C1 /* Trip+CoreDataClass.swift in Sources */,
+				8BCCDAEB210ACBF600530CB8 /* AddEntryViewController.swift in Sources */,
 				8BCFEA132106A0AD003CC6C1 /* Entry+CoreDataProperties.swift in Sources */,
+				8BCCDAE9210AB2B900530CB8 /* EntriesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
