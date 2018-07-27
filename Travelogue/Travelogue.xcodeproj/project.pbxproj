@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8BCCDAE3210AAB7A00530CB8 /* AddTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCCDAE2210AAB7A00530CB8 /* AddTripViewController.swift */; };
 		8BCFE9DA21069D18003CC6C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCFE9D921069D18003CC6C1 /* AppDelegate.swift */; };
 		8BCFE9DF21069D18003CC6C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BCFE9DD21069D18003CC6C1 /* Main.storyboard */; };
 		8BCFE9E221069D18003CC6C1 /* Travelogue.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8BCFE9E021069D18003CC6C1 /* Travelogue.xcdatamodeld */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8BCCDAE2210AAB7A00530CB8 /* AddTripViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTripViewController.swift; sourceTree = "<group>"; };
 		8BCFE9D621069D18003CC6C1 /* Travelogue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Travelogue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BCFE9D921069D18003CC6C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8BCFE9DE21069D18003CC6C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				8BCFEA0C21069D82003CC6C1 /* TripsViewController.swift */,
+				8BCCDAE2210AAB7A00530CB8 /* AddTripViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 				8BCFE9DA21069D18003CC6C1 /* AppDelegate.swift in Sources */,
 				8BCFEA122106A0AD003CC6C1 /* Entry+CoreDataClass.swift in Sources */,
 				8BCFEA192106ACF2003CC6C1 /* TripTableViewCell.swift in Sources */,
+				8BCCDAE3210AAB7A00530CB8 /* AddTripViewController.swift in Sources */,
 				8BCFE9E221069D18003CC6C1 /* Travelogue.xcdatamodeld in Sources */,
 				8BCFEA142106A0AD003CC6C1 /* Trip+CoreDataClass.swift in Sources */,
 				8BCFEA132106A0AD003CC6C1 /* Entry+CoreDataProperties.swift in Sources */,

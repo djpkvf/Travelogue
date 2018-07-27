@@ -11,11 +11,30 @@ import CoreData
 
 class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var tripsTableView: UITableView!
+    
     var trips: [Trip] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
         
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        let fetchRequest: NSFetchRequest<Trip> = Trip.fetchRequest()
+        
+        do {
+            trips = try managedContext.fetch(fetchRequest)
+            
+            tripsTableView.reloadData()
+        } catch {
+            print("Could not fetch")
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -55,7 +74,6 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
 //        dismiss(animated: true)
 //    }
     
-
     /*
     // MARK: - Navigation
 

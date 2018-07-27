@@ -27,7 +27,73 @@
             </objects>
             <point key="canvasLocation" x="-506" y="90"/>
         </scene>
-        <!--Trips View Controller-->
+        <!--My Trips-->
+        <scene sceneID="6kE-Jf-jqi">
+            <objects>
+                <viewController id="jNU-vs-DgB" customClass="AddTripViewController" customModule="Travelogue" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="F0E-p1-Uo5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trip Title:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mp0-Tk-GKm">
+                                <rect key="frame" x="16" y="74" width="69.5" height="21"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MfJ-4h-QAP">
+                                <rect key="frame" x="16" y="101" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trip Description:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zzd-uA-dbD">
+                                <rect key="frame" x="16" y="139" width="125.5" height="21.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Description" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="YKs-Bj-sQS">
+                                <rect key="frame" x="16" y="166.5" width="343" height="490.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="MfJ-4h-QAP" firstAttribute="leading" secondItem="Mp0-Tk-GKm" secondAttribute="leading" id="8Tn-ah-CwD"/>
+                            <constraint firstItem="YKs-Bj-sQS" firstAttribute="leading" secondItem="Zzd-uA-dbD" secondAttribute="leading" id="Frb-y7-yRR"/>
+                            <constraint firstItem="Mp0-Tk-GKm" firstAttribute="top" secondItem="F0E-p1-Uo5" secondAttribute="topMargin" constant="10" id="GZl-cM-NN5"/>
+                            <constraint firstItem="Mp0-Tk-GKm" firstAttribute="leading" secondItem="F0E-p1-Uo5" secondAttribute="leadingMargin" id="L55-nn-HRA"/>
+                            <constraint firstItem="Zzd-uA-dbD" firstAttribute="leading" secondItem="MfJ-4h-QAP" secondAttribute="leading" id="PEi-Ke-PTW"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="YKs-Bj-sQS" secondAttribute="bottom" constant="10" id="R8y-0M-XqW"/>
+                            <constraint firstItem="YKs-Bj-sQS" firstAttribute="top" secondItem="Zzd-uA-dbD" secondAttribute="bottom" constant="6" id="Sqp-Tz-IWV"/>
+                            <constraint firstItem="MfJ-4h-QAP" firstAttribute="top" secondItem="Mp0-Tk-GKm" secondAttribute="bottom" constant="6" id="TKf-Kq-fRy"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="YKs-Bj-sQS" secondAttribute="trailing" id="VYg-Sg-vQH"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="MfJ-4h-QAP" secondAttribute="trailing" id="a4o-Mq-HFW"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Mp0-Tk-GKm" secondAttribute="trailing" priority="250" constant="273.5" id="aat-1u-5JE"/>
+                            <constraint firstItem="Zzd-uA-dbD" firstAttribute="top" secondItem="MfJ-4h-QAP" secondAttribute="bottom" constant="8" id="kMF-PM-dzR"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Zzd-uA-dbD" secondAttribute="trailing" priority="250" constant="217.5" id="xRl-x9-Kgs"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="JrZ-wi-3DY"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="My Trips" id="u5j-OW-zpP">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="NBe-RL-CPD">
+                            <connections>
+                                <action selector="saveTrip:" destination="jNU-vs-DgB" id="dTi-YH-elC"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tripDescriptionTextBox" destination="YKs-Bj-sQS" id="H3W-cb-Nyh"/>
+                        <outlet property="tripTitleTextField" destination="MfJ-4h-QAP" id="tvq-w9-zxA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vir-Uk-RwK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="305" y="-636"/>
+        </scene>
+        <!--My Trips-->
         <scene sceneID="OAv-Pr-KMI">
             <objects>
                 <viewController id="1We-s9-hDI" customClass="TripsViewController" customModule="Travelogue" customModuleProvider="target" sceneMemberID="viewController">
@@ -39,21 +105,21 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tripCell" rowHeight="75" id="GgC-4Z-TGP" customClass="TripTableViewCell" customModule="Travelogue" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="75"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tripCell" rowHeight="60" id="GgC-4Z-TGP" customClass="TripTableViewCell" customModule="Travelogue" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GgC-4Z-TGP" id="eCO-ZJ-qZN">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="74.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vQN-sm-sMK">
                                                     <rect key="frame" x="15" y="11" width="345" height="21"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qm5-hX-yME">
-                                                    <rect key="frame" x="15" y="37" width="345" height="15.5"/>
+                                                    <rect key="frame" x="15" y="38" width="345" height="15.5"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -62,8 +128,9 @@
                                             <constraints>
                                                 <constraint firstAttribute="trailingMargin" secondItem="vQN-sm-sMK" secondAttribute="trailing" id="I9u-8Y-1yg"/>
                                                 <constraint firstItem="qm5-hX-yME" firstAttribute="leading" secondItem="vQN-sm-sMK" secondAttribute="leading" id="Nf2-ZE-E7N"/>
+                                                <constraint firstAttribute="bottom" secondItem="qm5-hX-yME" secondAttribute="bottom" constant="6" id="QCh-xD-LhJ"/>
                                                 <constraint firstItem="vQN-sm-sMK" firstAttribute="top" secondItem="eCO-ZJ-qZN" secondAttribute="topMargin" id="RUo-NA-0L9"/>
-                                                <constraint firstItem="qm5-hX-yME" firstAttribute="top" secondItem="vQN-sm-sMK" secondAttribute="bottom" constant="5" id="eps-V2-tna"/>
+                                                <constraint firstItem="qm5-hX-yME" firstAttribute="top" secondItem="vQN-sm-sMK" secondAttribute="bottom" constant="6" id="eps-V2-tna"/>
                                                 <constraint firstItem="qm5-hX-yME" firstAttribute="trailing" secondItem="vQN-sm-sMK" secondAttribute="trailing" id="pnY-CF-X7k"/>
                                                 <constraint firstItem="vQN-sm-sMK" firstAttribute="leading" secondItem="eCO-ZJ-qZN" secondAttribute="leadingMargin" id="uRO-6J-cdH"/>
                                             </constraints>
@@ -89,7 +156,16 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="E6Y-ei-GCW"/>
                     </view>
-                    <navigationItem key="navigationItem" id="inc-2D-fbj"/>
+                    <navigationItem key="navigationItem" title="My Trips" id="inc-2D-fbj">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="TXH-Rk-Wf4">
+                            <connections>
+                                <segue destination="jNU-vs-DgB" kind="show" id="8K2-uG-l3z"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tripsTableView" destination="a8Z-2k-A8u" id="8xT-Ld-tlZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1gT-Hz-5cN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
