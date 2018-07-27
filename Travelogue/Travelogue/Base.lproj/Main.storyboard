@@ -205,8 +205,8 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ycw-F4-AeC">
-                                                    <rect key="frame" x="103" y="66.5" width="257" height="17"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="14"/>
+                                                    <rect key="frame" x="103" y="66.5" width="257" height="14.5"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -227,6 +227,7 @@
                                             <outlet property="entryDate" destination="Ycw-F4-AeC" id="SY0-1a-EEv"/>
                                             <outlet property="entryImageView" destination="YnQ-6a-0mU" id="Wc8-cv-08K"/>
                                             <outlet property="entryTitle" destination="1Qn-dC-biO" id="q0C-uf-e7y"/>
+                                            <segue destination="scR-ke-78M" kind="show" identifier="displayEntry" id="LTJ-w4-HEI"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -248,7 +249,7 @@
                     <navigationItem key="navigationItem" title="Trip Entries" id="ENt-wu-LFN">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="cWE-Xe-u30">
                             <connections>
-                                <segue destination="uaf-ws-OK2" kind="show" id="bBJ-vF-o0R"/>
+                                <segue destination="uaf-ws-OK2" kind="show" identifier="addEntry" id="bBJ-vF-o0R"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -259,6 +260,87 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OvQ-Jr-wBx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1173.5999999999999" y="89.505247376311857"/>
+        </scene>
+        <!--Entry-->
+        <scene sceneID="IS1-cW-e6g">
+            <objects>
+                <viewController id="scR-ke-78M" customClass="EntryViewController" customModule="Travelogue" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TIx-Mr-1sh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CZE-YR-J0q">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            </imageView>
+                            <visualEffectView opaque="NO" alpha="0.75" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3hH-1r-NcP">
+                                <rect key="frame" x="0.0" y="517" width="375" height="150"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="E4G-UG-Aja">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UcF-lM-1AM">
+                                            <rect key="frame" x="8" y="8" width="359" height="26"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="22"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ta-M7-nBf">
+                                            <rect key="frame" x="8" y="34" width="359" height="18"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="15"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3an-3r-tuk">
+                                            <rect key="frame" x="8" y="57" width="359" height="21.5"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="1Ta-M7-nBf" firstAttribute="leading" secondItem="UcF-lM-1AM" secondAttribute="leading" id="CNc-R6-UoN"/>
+                                        <constraint firstItem="3an-3r-tuk" firstAttribute="top" secondItem="1Ta-M7-nBf" secondAttribute="bottom" constant="5" id="FD6-8l-VMw"/>
+                                        <constraint firstItem="3an-3r-tuk" firstAttribute="leading" secondItem="1Ta-M7-nBf" secondAttribute="leading" id="SdL-iN-673"/>
+                                        <constraint firstItem="1Ta-M7-nBf" firstAttribute="top" secondItem="UcF-lM-1AM" secondAttribute="bottom" id="XK5-b2-vb2"/>
+                                        <constraint firstItem="UcF-lM-1AM" firstAttribute="leading" secondItem="E4G-UG-Aja" secondAttribute="leadingMargin" id="ftP-ME-QBE"/>
+                                        <constraint firstItem="UcF-lM-1AM" firstAttribute="top" secondItem="E4G-UG-Aja" secondAttribute="topMargin" id="nnN-r3-7Kt"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="UcF-lM-1AM" secondAttribute="trailing" id="oND-Bb-IjQ"/>
+                                        <constraint firstItem="1Ta-M7-nBf" firstAttribute="trailing" secondItem="UcF-lM-1AM" secondAttribute="trailing" id="sUb-sM-ZRS"/>
+                                        <constraint firstItem="3an-3r-tuk" firstAttribute="trailing" secondItem="1Ta-M7-nBf" secondAttribute="trailing" id="u4c-Da-aFE"/>
+                                    </constraints>
+                                </view>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="jmJ-pI-aQi"/>
+                                </constraints>
+                                <blurEffect style="extraLight"/>
+                            </visualEffectView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="3hH-1r-NcP" firstAttribute="bottom" secondItem="CZE-YR-J0q" secondAttribute="bottom" id="2Rj-b0-Lx1"/>
+                            <constraint firstItem="pUq-5F-QNl" firstAttribute="trailing" secondItem="CZE-YR-J0q" secondAttribute="trailing" id="5S5-tp-0db"/>
+                            <constraint firstItem="CZE-YR-J0q" firstAttribute="top" secondItem="pUq-5F-QNl" secondAttribute="top" id="D52-7u-3jP"/>
+                            <constraint firstItem="3hH-1r-NcP" firstAttribute="leading" secondItem="CZE-YR-J0q" secondAttribute="leading" id="ZJy-9N-xNM"/>
+                            <constraint firstItem="3hH-1r-NcP" firstAttribute="centerX" secondItem="CZE-YR-J0q" secondAttribute="centerX" id="eCG-2h-sm7"/>
+                            <constraint firstItem="CZE-YR-J0q" firstAttribute="leading" secondItem="pUq-5F-QNl" secondAttribute="leading" id="nc2-nl-x3O"/>
+                            <constraint firstItem="pUq-5F-QNl" firstAttribute="bottom" secondItem="CZE-YR-J0q" secondAttribute="bottom" id="yvE-rR-dH2"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="pUq-5F-QNl"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Entry" id="ScI-uT-KDm">
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="GQD-pm-WVU"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="entryDateLabel" destination="1Ta-M7-nBf" id="oo0-4x-RIC"/>
+                        <outlet property="entryDescriptionLabel" destination="3an-3r-tuk" id="P24-CS-LrL"/>
+                        <outlet property="entryImageView" destination="CZE-YR-J0q" id="N9P-pn-2Td"/>
+                        <outlet property="entryTitleLabel" destination="UcF-lM-1AM" id="kPK-V5-EgQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ted-XC-kd6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2053.5999999999999" y="89.505247376311857"/>
         </scene>
         <!--Add Entry-->
         <scene sceneID="4JX-XV-XaK">

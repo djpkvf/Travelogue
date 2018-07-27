@@ -49,16 +49,43 @@ class EntriesViewController: UIViewController, UITableViewDataSource, UITableVie
         return cell
     }
     
-    
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let destination = segue.destination as? AddEntryViewController else {
+    func deleteEntry(at indexPath: IndexPath) {
+        guard let entry = trip?.entries?[indexPath.row] else {
             return
         }
-        destination.trip = trip
+        
+        if let managedObjectContext = entry.managedObjectContext {
+            managedObjectContext.delete(entry)
+            
+            do {
+                try managedObjectContext.save()
+                entriesTableView.deleteRows(at: [indexPath], with: .automatic)
+            } catch {
+                entriesTableView.reloadData()
+            }
+        }
     }
     
+    // Delete or Edit Entry
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let delete = UITableViewRowAction(style: .destructive, title: "Delete") {
+            action, index in
+            self.deleteEntry(at: indexPath)
+        }
+        
+        return [delete]
+    }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let segueIdentifier = segue.identifier else {
+            return
+        }
+        
+        if segueIdentifier == "addEntry", let destination = segue.destination as? AddEntryViewController {
+            destination.trip = trip
+        } else if segueIdentifier == "displayEntry", let destination = segue.destination as? EntryViewController, let selectedRow = entriesTableView.indexPathForSelectedRow?.row {
+            destination.trip = trip
+            destination.entry = trip?.entries?[selectedRow]
+        }
+    }
 }
