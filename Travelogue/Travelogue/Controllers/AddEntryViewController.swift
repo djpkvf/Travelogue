@@ -26,6 +26,12 @@ class AddEntryViewController: UIViewController, UIImagePickerControllerDelegate,
             entryTitleTextField.text = entry.title
             entryDescriptionTextBox.text = entry.contents
             entryImageView.image = entry.image
+            
+            cameraIconButton.isEnabled = true
+            cameraIconButton.isHidden = false
+            
+            deleteImageButton.isEnabled = true
+            deleteImageButton.isHidden = false
         }
     }
 

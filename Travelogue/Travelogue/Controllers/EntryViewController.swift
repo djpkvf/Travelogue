@@ -23,8 +23,10 @@ class EntryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("Here!")
-
+        dateFormatter.dateFormat = "MMM d, yyyy"
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         if let entry = entry {
             print("Here in entry")
             entryImageView.image = entry.image
@@ -34,7 +36,6 @@ class EntryViewController: UIViewController {
             self.title = entry.title
             
             if let date = entry.date {
-                dateFormatter.dateFormat = "MMM d, yyyy"
                 entryDateLabel.text = dateFormatter.string(from: date)
             }
         }
@@ -42,18 +43,14 @@ class EntryViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        guard let destination = segue.destination as? AddEntryViewController else {
+            return
+        }
+        
+        destination.trip = trip
+        destination.entry = entry
     }
-    */
-
 }

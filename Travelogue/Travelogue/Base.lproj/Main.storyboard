@@ -272,7 +272,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CZE-YR-J0q">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                             </imageView>
-                            <visualEffectView opaque="NO" alpha="0.75" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3hH-1r-NcP">
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3hH-1r-NcP">
                                 <rect key="frame" x="0.0" y="517" width="375" height="150"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="E4G-UG-Aja">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
@@ -290,7 +290,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3an-3r-tuk">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3an-3r-tuk">
                                             <rect key="frame" x="8" y="57" width="359" height="21.5"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                                             <nil key="textColor"/>
@@ -309,11 +309,10 @@
                                         <constraint firstItem="3an-3r-tuk" firstAttribute="trailing" secondItem="1Ta-M7-nBf" secondAttribute="trailing" id="u4c-Da-aFE"/>
                                     </constraints>
                                 </view>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="jmJ-pI-aQi"/>
                                 </constraints>
-                                <blurEffect style="extraLight"/>
+                                <blurEffect style="regular"/>
                             </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -329,7 +328,11 @@
                         <viewLayoutGuide key="safeArea" id="pUq-5F-QNl"/>
                     </view>
                     <navigationItem key="navigationItem" title="Entry" id="ScI-uT-KDm">
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="GQD-pm-WVU"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="GQD-pm-WVU">
+                            <connections>
+                                <segue destination="uaf-ws-OK2" kind="show" identifier="editEntry" id="Uzh-Xk-9ff"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="entryDateLabel" destination="1Ta-M7-nBf" id="oo0-4x-RIC"/>
@@ -443,4 +446,7 @@
         <image name="cameraIcon" width="50" height="50"/>
         <image name="deleteXIcon" width="25" height="25"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Uzh-Xk-9ff"/>
+    </inferredMetricsTieBreakers>
 </document>
