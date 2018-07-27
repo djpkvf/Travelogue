@@ -10,6 +10,8 @@ import UIKit
 
 class EntriesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    @IBOutlet weak var entriesTableView: UITableView!
+    
     var trip: Trip?
     
     var dateFormatter = DateFormatter()
@@ -18,6 +20,10 @@ class EntriesViewController: UIViewController, UITableViewDataSource, UITableVie
         super.viewDidLoad()
         
         dateFormatter.dateFormat = "MMM d, yyyy"
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        entriesTableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,7 +54,10 @@ class EntriesViewController: UIViewController, UITableViewDataSource, UITableVie
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        guard let destination = segue.destination as? AddEntryViewController else {
+            return
+        }
+        destination.trip = trip
     }
     
 

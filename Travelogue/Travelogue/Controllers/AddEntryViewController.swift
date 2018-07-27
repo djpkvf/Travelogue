@@ -8,12 +8,13 @@
 
 import UIKit
 
-class AddEntryViewController: UIViewController {
+class AddEntryViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var cameraIconButton: UIButton!
     @IBOutlet weak var entryImageView: UIImageView!
     @IBOutlet weak var entryTitleTextField: UITextField!
     @IBOutlet weak var entryDescriptionTextBox: UITextView!
+    @IBOutlet weak var deleteImageButton: UIButton!
     
     var entry: Entry?
     var trip: Trip?
@@ -32,21 +33,53 @@ class AddEntryViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    @IBAction func addImage(_ sender: Any) {
+        let picker = UIImagePickerController()
+        picker.allowsEditing = true
+        picker.delegate = self
+        present(picker, animated: true)
+    }
+    
+    @IBAction func removeImage(_ sender: Any) {
+        entryImageView.image = nil
+        
+        cameraIconButton.isEnabled = true
+        cameraIconButton.isHidden = false
+        
+        deleteImageButton.isEnabled = false
+        deleteImageButton.isHidden = true
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        guard let image = info[UIImagePickerControllerEditedImage] as? UIImage else { return }
+        
+        entryImageView.image = image
+        cameraIconButton.isEnabled = false
+        cameraIconButton.isHidden = true
+        
+        deleteImageButton.isEnabled = true
+        deleteImageButton.isHidden = false
+
+        dismiss(animated: true)
+    }
+    
     @IBAction func saveEntry(_ sender: Any) {
-        guard let entryTitle = entryTitleTextField.text, let entryContents = entryDescriptionTextBox.text,
-                let entryImage = entryImageView.image else {
+        guard let entryTitle = entryTitleTextField.text, let entryContents = entryDescriptionTextBox.text, let entryImage = entryImageView.image else {
+            // If information is missing present the user with an error message
+            let alert = UIAlertController(title: "Warning", message: "You must include a title and description!", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            
             return
         }
         
         let entryDate = Date()
-        
+                
         if entry == nil {
-            // document doesn't exist, create new one
             if let trip = trip {
                 entry = Entry(title: entryTitle, contents: entryContents, date: entryDate, image: entryImage, trip: trip)
             }
         } else {
-            // document exists, update existing one
             if let trip = trip {
                 entry?.update(title: entryTitle, contents: entryContents, date: entryDate, image: entryImage, trip: trip)
             }

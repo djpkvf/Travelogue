@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -185,27 +184,28 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="entryCell" rowHeight="100" id="CiX-Gl-acE" customClass="EntryTableTableViewCell" customModule="Travelogue" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="100"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="entryCell" rowHeight="102" id="CiX-Gl-acE" customClass="EntryTableTableViewCell" customModule="Travelogue" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="102"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CiX-Gl-acE" id="Ycx-J2-Eo9">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="101.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YnQ-6a-0mU">
-                                                    <rect key="frame" x="15" y="9" width="80" height="80"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YnQ-6a-0mU">
+                                                    <rect key="frame" x="15" y="11" width="80" height="80"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" secondItem="YnQ-6a-0mU" secondAttribute="height" multiplier="1:1" id="imz-Eh-Lde"/>
+                                                        <constraint firstAttribute="height" constant="80" id="jz1-Ab-rIh"/>
+                                                        <constraint firstAttribute="width" constant="80" id="oxD-fa-jy4"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Qn-dC-biO">
-                                                    <rect key="frame" x="103" y="38.5" width="257" height="21"/>
+                                                    <rect key="frame" x="103" y="40.5" width="257" height="21"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ycw-F4-AeC">
-                                                    <rect key="frame" x="103" y="64.5" width="257" height="17"/>
+                                                    <rect key="frame" x="103" y="66.5" width="257" height="17"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -218,7 +218,7 @@
                                                 <constraint firstAttribute="leadingMargin" secondItem="YnQ-6a-0mU" secondAttribute="leading" id="JEM-bH-Tc9"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="YnQ-6a-0mU" secondAttribute="bottom" id="Odk-tc-Ybs"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="1Qn-dC-biO" secondAttribute="trailing" id="Pja-3W-lWC"/>
-                                                <constraint firstItem="YnQ-6a-0mU" firstAttribute="top" secondItem="Ycx-J2-Eo9" secondAttribute="topMargin" constant="-2" id="nKE-5i-rpy"/>
+                                                <constraint firstItem="YnQ-6a-0mU" firstAttribute="top" secondItem="Ycx-J2-Eo9" secondAttribute="topMargin" id="nKE-5i-rpy"/>
                                                 <constraint firstItem="1Qn-dC-biO" firstAttribute="centerY" secondItem="YnQ-6a-0mU" secondAttribute="centerY" id="tOR-fI-g0p"/>
                                                 <constraint firstItem="Ycw-F4-AeC" firstAttribute="leading" secondItem="1Qn-dC-biO" secondAttribute="leading" id="y5v-iJ-aER"/>
                                             </constraints>
@@ -252,6 +252,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="entriesTableView" destination="UXp-ou-r1A" id="pNf-0I-Cvw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OvQ-Jr-wBx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -297,6 +300,16 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gXF-wx-wiS">
                                 <rect key="frame" x="162" y="163" width="50" height="50"/>
                                 <state key="normal" image="cameraIcon"/>
+                                <connections>
+                                    <action selector="addImage:" destination="uaf-ws-OK2" eventType="touchUpInside" id="xLE-CI-ocS"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2cV-Gh-8lM">
+                                <rect key="frame" x="21" y="79" width="25" height="25"/>
+                                <state key="normal" image="deleteXIcon"/>
+                                <connections>
+                                    <action selector="removeImage:" destination="uaf-ws-OK2" eventType="touchUpInside" id="zfz-NT-aet"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -309,6 +322,7 @@
                             <constraint firstItem="HFE-Fv-9Ue" firstAttribute="top" secondItem="cCf-a0-LvL" secondAttribute="bottom" constant="10" id="PnM-Vq-bXq"/>
                             <constraint firstItem="zYA-at-rKt" firstAttribute="trailing" secondItem="y55-ll-87Q" secondAttribute="trailing" id="VEo-WN-sQp"/>
                             <constraint firstItem="HFE-Fv-9Ue" firstAttribute="trailing" secondItem="cCf-a0-LvL" secondAttribute="trailing" id="XO1-4R-DlI"/>
+                            <constraint firstItem="cCf-a0-LvL" firstAttribute="top" secondItem="2cV-Gh-8lM" secondAttribute="bottom" constant="-30" id="XjK-2Z-aOy"/>
                             <constraint firstItem="zYA-at-rKt" firstAttribute="top" secondItem="y55-ll-87Q" secondAttribute="bottom" constant="6" id="YQL-yz-neY"/>
                             <constraint firstItem="lYx-wU-zcD" firstAttribute="leading" secondItem="HFE-Fv-9Ue" secondAttribute="leading" id="aTA-Yf-zsG"/>
                             <constraint firstItem="gXF-wx-wiS" firstAttribute="centerY" secondItem="cCf-a0-LvL" secondAttribute="centerY" id="av4-fN-mPT"/>
@@ -319,6 +333,7 @@
                             <constraint firstItem="lYx-wU-zcD" firstAttribute="trailing" secondItem="HFE-Fv-9Ue" secondAttribute="trailing" id="mvv-Bg-AmP"/>
                             <constraint firstItem="y55-ll-87Q" firstAttribute="leading" secondItem="lYx-wU-zcD" secondAttribute="leading" id="ncf-PS-eQB"/>
                             <constraint firstItem="gXF-wx-wiS" firstAttribute="centerX" secondItem="cCf-a0-LvL" secondAttribute="centerX" id="ojb-b9-Hlb"/>
+                            <constraint firstItem="cCf-a0-LvL" firstAttribute="leading" secondItem="2cV-Gh-8lM" secondAttribute="trailing" constant="-30" id="raM-Cl-n5e"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jPc-7s-Dss"/>
                     </view>
@@ -331,6 +346,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="cameraIconButton" destination="gXF-wx-wiS" id="gPN-if-oEZ"/>
+                        <outlet property="deleteImageButton" destination="2cV-Gh-8lM" id="BOt-c6-H7Q"/>
                         <outlet property="entryDescriptionTextBox" destination="zYA-at-rKt" id="WJa-tF-YWf"/>
                         <outlet property="entryImageView" destination="cCf-a0-LvL" id="bZ3-ga-1v9"/>
                         <outlet property="entryTitleTextField" destination="lYx-wU-zcD" id="fcD-aT-Sa3"/>
@@ -343,5 +359,6 @@
     </scenes>
     <resources>
         <image name="cameraIcon" width="50" height="50"/>
+        <image name="deleteXIcon" width="25" height="25"/>
     </resources>
 </document>
