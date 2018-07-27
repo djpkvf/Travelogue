@@ -27,11 +27,7 @@ class AddEntryViewController: UIViewController, UIImagePickerControllerDelegate,
             entryDescriptionTextBox.text = entry.contents
             entryImageView.image = entry.image
             
-            cameraIconButton.isEnabled = true
-            cameraIconButton.isHidden = false
-            
-            deleteImageButton.isEnabled = true
-            deleteImageButton.isHidden = false
+            handleButtonAppearance(cameraIconEnabled: false, deleteIconEnabled: true)
         }
     }
 
@@ -39,32 +35,48 @@ class AddEntryViewController: UIViewController, UIImagePickerControllerDelegate,
         super.didReceiveMemoryWarning()
     }
     
+    func handleButtonAppearance(cameraIconEnabled: Bool, deleteIconEnabled: Bool) {
+        _ = cameraIconEnabled ? (cameraIconButton.isEnabled = true, cameraIconButton.isHidden = false) : (cameraIconButton.isEnabled = false, cameraIconButton.isHidden = true)
+        
+        _ = deleteIconEnabled ? (deleteImageButton.isEnabled = true, deleteImageButton.isHidden = false) : (deleteImageButton.isEnabled = false, deleteImageButton.isHidden = true)
+    }
+    
     @IBAction func addImage(_ sender: Any) {
         let picker = UIImagePickerController()
         picker.allowsEditing = true
         picker.delegate = self
-        present(picker, animated: true)
+        
+        let alert = UIAlertController(title: "Choose Image Options", message: "Use your camera or access your photo library?", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { action in
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                picker.sourceType = .camera
+                self.present(picker, animated: true)
+            }
+        }))
+        alert.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { action in
+            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+                picker.sourceType = .photoLibrary
+                self.present(picker, animated: true)
+            }
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        present(alert, animated: true)
     }
     
     @IBAction func removeImage(_ sender: Any) {
         entryImageView.image = nil
         
-        cameraIconButton.isEnabled = true
-        cameraIconButton.isHidden = false
-        
-        deleteImageButton.isEnabled = false
-        deleteImageButton.isHidden = true
+        handleButtonAppearance(cameraIconEnabled: true, deleteIconEnabled: false)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         guard let image = info[UIImagePickerControllerEditedImage] as? UIImage else { return }
         
         entryImageView.image = image
-        cameraIconButton.isEnabled = false
-        cameraIconButton.isHidden = true
         
-        deleteImageButton.isEnabled = true
-        deleteImageButton.isHidden = false
+        handleButtonAppearance(cameraIconEnabled: false, deleteIconEnabled: true)
 
         dismiss(animated: true)
     }
