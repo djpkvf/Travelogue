@@ -27,6 +27,8 @@ class AddEntryViewController: UIViewController, UIImagePickerControllerDelegate,
             entryDescriptionTextBox.text = entry.contents
             entryImageView.image = entry.image
             
+            self.title = entry.title
+            
             handleButtonAppearance(cameraIconEnabled: false, deleteIconEnabled: true)
         }
     }
@@ -35,12 +37,14 @@ class AddEntryViewController: UIViewController, UIImagePickerControllerDelegate,
         super.didReceiveMemoryWarning()
     }
     
+    //Show/hide the camera and delete icons
     func handleButtonAppearance(cameraIconEnabled: Bool, deleteIconEnabled: Bool) {
         _ = cameraIconEnabled ? (cameraIconButton.isEnabled = true, cameraIconButton.isHidden = false) : (cameraIconButton.isEnabled = false, cameraIconButton.isHidden = true)
         
         _ = deleteIconEnabled ? (deleteImageButton.isEnabled = true, deleteImageButton.isHidden = false) : (deleteImageButton.isEnabled = false, deleteImageButton.isHidden = true)
     }
     
+    // Add Image
     @IBAction func addImage(_ sender: Any) {
         let picker = UIImagePickerController()
         picker.allowsEditing = true
@@ -65,12 +69,14 @@ class AddEntryViewController: UIViewController, UIImagePickerControllerDelegate,
         present(alert, animated: true)
     }
     
+    //Remove Image
     @IBAction func removeImage(_ sender: Any) {
         entryImageView.image = nil
         
         handleButtonAppearance(cameraIconEnabled: true, deleteIconEnabled: false)
     }
     
+    //Image Picker Controller.. Handles what to do with the picked image
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         guard let image = info[UIImagePickerControllerEditedImage] as? UIImage else { return }
         
@@ -81,9 +87,10 @@ class AddEntryViewController: UIViewController, UIImagePickerControllerDelegate,
         dismiss(animated: true)
     }
     
+    //Save the Entry into CoreData
     @IBAction func saveEntry(_ sender: Any) {
-        guard let entryTitle = entryTitleTextField.text, let entryContents = entryDescriptionTextBox.text, let entryImage = entryImageView.image else {
-            // If information is missing present the user with an error message
+        guard let entryTitle = entryTitleTextField.text, let entryContents = entryDescriptionTextBox.text, let entryImage = entryImageView.image,
+        !entryTitle.isEmpty, !entryContents.isEmpty else {
             let alert = UIAlertController(title: "Warning", message: "You must include a title and description!", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)

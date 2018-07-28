@@ -48,6 +48,52 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return cell
     }
     
+    // Delete or Edit Trip
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let delete = UITableViewRowAction(style: .destructive, title: "Delete") {
+            action, index in
+            self.confirmDeleteTrip(at: indexPath)
+        }
+        
+        return [delete]
+    }
+    
+    func confirmDeleteTrip(at indexPath: IndexPath) {
+        let trip = trips[indexPath.row]
+        
+        if let entries = trip.entries, entries.count > 0 {
+            let title = trip.title ?? "Trip"
+            // Alert user to delete the Trip if the Trip contains any Entries
+            let alert = UIAlertController(title: "Delete Trip", message: "\(title) contains entries. Do you want to delete it?", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.destructive, handler: {
+                (alertAction) -> Void in
+                self.deleteTrip(at: indexPath)
+            }))
+            self.present(alert, animated: true, completion: nil)
+            
+        } else {
+            deleteTrip(at: indexPath)
+        }
+    }
+    
+    func deleteTrip(at indexPath: IndexPath) {
+        let trip = trips[indexPath.row]
+        
+        if let managedObjectContext = trip.managedObjectContext {
+            managedObjectContext.delete(trip)
+            
+            do {
+                try managedObjectContext.save()
+                self.trips.remove(at: indexPath.row)
+                tripsTableView.deleteRows(at: [indexPath], with: .automatic)
+            } catch {
+                print("Deletion of Trip Failed")
+                tripsTableView.reloadData()
+            }
+        }
+    }
+    
     func getTrips() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
@@ -66,26 +112,6 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
-    // Selecting image from Photo Library
-//    @IBAction func addImageFromPicker(_ sender: Any) {
-//        let picker = UIImagePickerController()
-//        picker.allowsEditing = true
-//        picker.delegate = self
-//        present(picker, animated: true)
-//    }
-    
-//    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-//        guard let image = info[UIImagePickerControllerEditedImage] as? UIImage else { return }
-//        
-//        imageView.image = image
-//
-//        dismiss(animated: true)
-//    }
-    
-    
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let destination = segue.destination as? EntriesViewController,
             let selectedRow = self.tripsTableView.indexPathForSelectedRow?.row else {

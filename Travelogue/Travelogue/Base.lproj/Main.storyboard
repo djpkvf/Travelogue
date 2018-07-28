@@ -160,7 +160,7 @@
                     <navigationItem key="navigationItem" title="My Trips" id="inc-2D-fbj">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="TXH-Rk-Wf4">
                             <connections>
-                                <segue destination="jNU-vs-DgB" kind="show" id="8K2-uG-l3z"/>
+                                <segue destination="jNU-vs-DgB" kind="show" identifier="newTrip" id="8K2-uG-l3z"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -273,9 +273,9 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                             </imageView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3hH-1r-NcP">
-                                <rect key="frame" x="0.0" y="517" width="375" height="150"/>
+                                <rect key="frame" x="0.0" y="542" width="375" height="125"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="E4G-UG-Aja">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="125"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UcF-lM-1AM">
@@ -310,7 +310,7 @@
                                     </constraints>
                                 </view>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="jmJ-pI-aQi"/>
+                                    <constraint firstAttribute="height" constant="125" id="jmJ-pI-aQi"/>
                                 </constraints>
                                 <blurEffect style="regular"/>
                             </visualEffectView>

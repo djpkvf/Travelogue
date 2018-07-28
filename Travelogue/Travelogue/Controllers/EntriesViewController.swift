@@ -19,6 +19,10 @@ class EntriesViewController: UIViewController, UITableViewDataSource, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if let trip = trip {
+            self.title = trip.title
+        }
+        
         dateFormatter.dateFormat = "MMM d, yyyy"
     }
     
@@ -66,7 +70,7 @@ class EntriesViewController: UIViewController, UITableViewDataSource, UITableVie
         }
     }
     
-    // Delete or Edit Entry
+    // Delete Entry
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let delete = UITableViewRowAction(style: .destructive, title: "Delete") {
             action, index in
