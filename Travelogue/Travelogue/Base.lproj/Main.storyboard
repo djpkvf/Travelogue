@@ -166,6 +166,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tripsTableView" destination="a8Z-2k-A8u" id="8xT-Ld-tlZ"/>
+                        <segue destination="jNU-vs-DgB" kind="show" identifier="editTrip" id="Jic-yg-TIu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1gT-Hz-5cN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -448,5 +449,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Uzh-Xk-9ff"/>
+        <segue reference="Jic-yg-TIu"/>
     </inferredMetricsTieBreakers>
 </document>

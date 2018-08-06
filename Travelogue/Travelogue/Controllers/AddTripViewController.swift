@@ -13,9 +13,15 @@ class AddTripViewController: UIViewController {
     @IBOutlet weak var tripTitleTextField: UITextField!
     @IBOutlet weak var tripDescriptionTextBox: UITextView!
     
+    var trip: Trip?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        if let trip = trip {
+            tripTitleTextField.text = trip.title
+            tripDescriptionTextBox.text = trip.contents
+        }
     }
 
     override func didReceiveMemoryWarning() {

@@ -50,12 +50,16 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     // Delete or Edit Trip
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let delete = UITableViewRowAction(style: .destructive, title: "Delete") {
-            action, index in
+        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { action, index in
             self.confirmDeleteTrip(at: indexPath)
         }
         
-        return [delete]
+        let edit = UITableViewRowAction(style: .default, title: "Edit") { action, index in
+            self.performSegue(withIdentifier: "editTrip", sender: self.tripsTableView.cellForRow(at: index))
+        }
+        edit.backgroundColor = UIColor.blue
+        
+        return [delete, edit]
     }
     
     func confirmDeleteTrip(at indexPath: IndexPath) {
@@ -113,10 +117,11 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let destination = segue.destination as? EntriesViewController,
-            let selectedRow = self.tripsTableView.indexPathForSelectedRow?.row else {
-                return
+        if let destination = segue.destination as? EntryViewController, let selectedRow = tripsTableView.indexPathForSelectedRow?.row {
+            destination.trip = trips[selectedRow]
         }
-        destination.trip = trips[selectedRow]
+        if let destination = segue.destination as? AddTripViewController, let selectedCell as? TripTableViewCell, {
+            destination.trip = trips[selectedRow]
+        }
     }
 }
