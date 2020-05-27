@@ -30,7 +30,7 @@ public class Entry: NSManagedObject {
         }
         set {
             if let imageData = newValue {
-                rawImage = UIImagePNGRepresentation(imageData) as NSData?
+                rawImage = imageData.pngData() as NSData?
             }
         }
     }

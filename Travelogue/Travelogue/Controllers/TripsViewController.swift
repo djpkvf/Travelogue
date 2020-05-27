@@ -64,9 +64,9 @@ class TripsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         if let entries = trip.entries, entries.count > 0 {
             let title = trip.title ?? "Trip"
             // Alert user to delete the Trip if the Trip contains any Entries
-            let alert = UIAlertController(title: "Delete Trip", message: "\(title) contains entries. Do you want to delete it?", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
-            alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.destructive, handler: {
+            let alert = UIAlertController(title: "Delete Trip", message: "\(title) contains entries. Do you want to delete it?", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: "Yes", style: UIAlertAction.Style.destructive, handler: {
                 (alertAction) -> Void in
                 self.deleteTrip(at: indexPath)
             }))
